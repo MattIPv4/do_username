@@ -1,5 +1,5 @@
 module DOUsername
-  SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray giantSquid shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl).freeze
+  SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl).freeze
   SEA_OBJECTS = %w(boat ship submarine yacht dinghy raft kelp seaweed anchor).freeze
 
   DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly).freeze
