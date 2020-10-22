@@ -31,7 +31,7 @@ module DOUsername
     elsif (descriptor + noun).length <= max_size
       descriptor + noun
     elsif (color + noun).length <= max_size
-      descriptor + noun
+      color + noun
     else
       noun[0...max_size]
     end

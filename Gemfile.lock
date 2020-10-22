@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    do_username (0.0.1)
+    do_username (0.0.2)
 
 GEM
   remote: https://rubygems.org/
