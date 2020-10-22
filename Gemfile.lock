@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    DOUsername (0.0.1)
+    do_username (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -11,7 +11,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  DOUsername!
+  do_username!
 
 BUNDLED WITH
    2.1.4
