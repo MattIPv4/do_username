@@ -44,8 +44,7 @@ module DOUsername
   end
 
   def random_descriptor(noun)
-    descriptors = DESCRIPTORS.dup
-    descriptors += SIZE_DESCRIPTORS
+    descriptors = DESCRIPTORS + SIZE_DESCRIPTORS
     descriptors += CREATURE_DESCRIPTORS if SEA_CREATURES.include?(noun)
     descriptors.sample
   end
