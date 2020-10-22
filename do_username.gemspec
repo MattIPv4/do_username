@@ -9,4 +9,6 @@ Gem::Specification.new do |s|
   s.files       = ['lib/do_username.rb']
   s.homepage    = 'https://rubygems.org/gems/do_username'
   s.license     = 'Apache-2.0'
+
+  s.add_development_dependency 'rspec', '~> 3.9.0'
 end
