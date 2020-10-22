@@ -8,7 +8,7 @@ https://rubygems.org/gems/do_username
 
 `gem install do_username`
 
-or, with bundler:
+Or, with bundler:
 
 `bundle add do_username`
 
