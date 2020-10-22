@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    DOUsername (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  DOUsername!
+
+BUNDLED WITH
+   2.1.4
