@@ -18,6 +18,10 @@ RSpec.describe DOUsername do
       expect(subject.generate).to be_a String
     end
 
+    it 'responds with CamelCase string' do
+      expect(subject.generate.scan(/[A-Z]/).size).to be >= 3
+    end
+
     context 'with noun part' do
       before { stub_const('DOUsername::SEA_LIST', ['walrus']) }
 
@@ -46,9 +50,34 @@ RSpec.describe DOUsername do
       end
     end
 
-    context 'with size argument' do
+    context 'with max_size argument' do
       it 'responds with valid username based on sent size' do
         expect(subject.generate(15).size).to be <= 15
+      end
+
+      context 'when max_size is lower than the full combination' do
+        before do
+          stub_const('DOUsername::DESCRIPTORS', ['cute'])
+          stub_const('DOUsername::SEA_LIST', ['walrus'])
+          stub_const('DOUsername::COLORS', ['red'])
+          stub_const('DOUsername::SEA_CREATURES', [])
+        end
+
+        it 'responds with full combination (descriptor + color + noun)' do
+          expect(subject.generate(100)).to eq('CuteRedWalrus')
+        end
+
+        it 'responds with (descriptor + noun) username based' do
+          expect(subject.generate(12)).to eq('CuteWalrus')
+        end
+
+        it 'responds with (color + noun) username based' do
+          expect(subject.generate(9)).to eq('RedWalrus')
+        end
+        
+        it 'responds with part of noun username' do
+          expect(subject.generate(5)).to eq('Walru')
+        end
       end
 
       context 'when is invalid' do
