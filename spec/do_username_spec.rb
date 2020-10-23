@@ -4,7 +4,7 @@ RSpec.describe DOUsername do
 
     it 'responds with different usernames based on srand' do
       [
-        'LargeBlueCoral', 'HappyCyanRaft', 'SwimmingLightSeaGreenSeal'
+        'HappyElectricBlueBoat', 'DriftingAquaShark', 'MassiveTurquoiseWhale'
       ].each_with_index do |username, i|
         srand i
 
@@ -25,7 +25,7 @@ RSpec.describe DOUsername do
     end
 
     context 'with descriptor part' do
-      before do 
+      before do
         stub_const('DOUsername::DESCRIPTORS', ['cute'])
         stub_const('DOUsername::SIZE_DESCRIPTORS', ['huge'])
         stub_const('DOUsername::CREATURE_DESCRIPTORS', ['swimming'])
@@ -33,14 +33,6 @@ RSpec.describe DOUsername do
 
       it 'has descriptor in generated username' do
         expect(subject.generate).to match(/Cute|Huge|Swimming/)
-      end
-
-      context 'when giant is on noum part' do
-        before { stub_const('DOUsername::SEA_LIST', ['giant']) }
-
-        it 'does not contains size descriptors in generated username' do
-          expect(subject.generate).to match(/Cute|Swimming/)
-        end
       end
     end
 
