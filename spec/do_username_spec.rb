@@ -2,6 +2,8 @@ RSpec.describe DOUsername do
   describe '.generate' do
     subject { described_class }
 
+    # Please update this spec if module constants are updated
+    # see more at: https://github.com/MattIPv4/do_username/pull/8
     it 'responds with different usernames based on srand' do
       [
         'HappyElectricBlueBoat', 'DriftingAquaShark', 'MassiveTurquoiseWhale'
