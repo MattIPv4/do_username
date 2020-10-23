@@ -49,9 +49,9 @@ module DOUsername
   end
 
   def random_descriptor(noun)
-    descriptors = DESCRIPTORS
-    descriptors += CREATURE_DESCRIPTORS if SEA_CREATURES.include?(noun)
-    descriptors.sample
+    return DESCRIPTORS.sample unless SEA_CREATURES.include?(noun)
+
+    (DESCRIPTORS + CREATURE_DESCRIPTORS).sample
   end
 
   def random_color
