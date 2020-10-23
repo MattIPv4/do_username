@@ -2,6 +2,8 @@ module DOUsername
   SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl).freeze
   SEA_OBJECTS = %w(boat ship submarine yacht dinghy raft kelp seaweed anchor).freeze
 
+  SEA_LIST = (SEA_OBJECTS + SEA_CREATURES).freeze
+
   DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly floating drifting).freeze
   SIZE_DESCRIPTORS = %w(large big small giant massive tiny little).freeze
   CREATURE_DESCRIPTORS= %w(swimming sleeping eating hiding).freeze
@@ -11,6 +13,8 @@ module DOUsername
   extend self
 
   def generate(max_size = 30)
+    raise ArgumentError, 'The max_size argument must be greater than zero.' if max_size.to_i <= 0
+
     # Choose a noun first
     noun = random_noun
 
@@ -40,7 +44,7 @@ module DOUsername
   private
 
   def random_noun
-    (SEA_OBJECTS + SEA_CREATURES).sample
+    SEA_LIST.sample
   end
 
   def random_descriptor(noun)
