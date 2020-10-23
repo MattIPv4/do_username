@@ -2,9 +2,9 @@ module DOUsername
   SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl).freeze
   SEA_OBJECTS = %w(boat ship submarine yacht dinghy raft kelp seaweed anchor).freeze
 
-  DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly).freeze
+  DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly floating drifting).freeze
   SIZE_DESCRIPTORS = %w(large big small giant massive tiny little).freeze
-  CREATURE_DESCRIPTORS= %w(swimming floating drifting sleeping eating hiding).freeze
+  CREATURE_DESCRIPTORS= %w(swimming sleeping eating hiding).freeze
 
   COLORS = %w(blue blueGreen darkCyan electricBlue greenBlue lightCyan lightSeaGreen seaGreen turquoise aqua aquamarine teal cyan gray darkBlue cerulean azure lapis navy).freeze
 
