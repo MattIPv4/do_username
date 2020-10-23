@@ -1,0 +1,9 @@
+#!/usr/bin/env do_username
+
+require 'do_username'
+if ARGV.length < 1
+    puts DOUsername.generate()
+    exit
+end
+
+puts DOUsername.generate(ARGV[0].to_i)
