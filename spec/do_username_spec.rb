@@ -32,8 +32,7 @@ RSpec.describe DOUsername do
 
     context 'with descriptor part' do
       before do
-        stub_const('DOUsername::DESCRIPTORS', ['cute'])
-        stub_const('DOUsername::SIZE_DESCRIPTORS', ['huge'])
+        stub_const('DOUsername::DESCRIPTORS', ['cute', 'huge'])
         stub_const('DOUsername::CREATURE_DESCRIPTORS', ['swimming'])
       end
 
