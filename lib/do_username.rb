@@ -14,7 +14,7 @@ module DOUsername
   extend self
 
   def generate(max_size = 30)
-    raise ArgumentError, 'The max_size argument must be greater than zero.' if max_size.to_i <= 0
+    raise ArgumentError, 'The max_size argument must be an integer number greater than zero.' if max_size.to_i <= 0
 
     # Choose a noun first
     noun = random_noun

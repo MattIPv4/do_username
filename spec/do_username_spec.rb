@@ -51,29 +51,23 @@ RSpec.describe DOUsername do
         expect(subject.generate(15).size).to be <= 15
       end
 
-      context 'when size is lower than the combination' do
-        it 'responds with valid username based on sent size' do
-          expect(subject.generate(2).size).to eq 2
-        end
-      end
-
       context 'when is invalid' do
         it 'raises ArgumentError negative values' do
           expect {
             subject.generate(-99)
-          }.to raise_error(ArgumentError, 'The max_size argument must be greater than zero.')
+          }.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
         end
 
         it 'raises ArgumentError for zero' do
           expect {
             subject.generate(0)
-          }.to raise_error(ArgumentError, 'The max_size argument must be greater than zero.')
+          }.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
         end
 
         it 'raises ArgumentError for non-integer values' do
           expect {
             subject.generate('abc')
-          }.to raise_error(ArgumentError, 'The max_size argument must be greater than zero.')
+          }.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
         end
       end
     end
