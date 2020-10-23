@@ -1,12 +1,12 @@
 module DOUsername
-  SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray giantSquid shrimp mantaRay angler snorkler scubaDiver).freeze
-  SEA_OBJECTS = %w(boat ship submarine yacht dinghy raft kelp).freeze
+  SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl).freeze
+  SEA_OBJECTS = %w(boat ship submarine yacht dinghy raft kelp seaweed anchor).freeze
 
-  DESCRIPTORS = %w(cute adorable lovable happy sandy).freeze
-  SIZE_DESCRIPTORS = %w(large big small).freeze
-  CREATURE_DESCRIPTORS= %w(swimming).freeze
+  DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly floating drifting).freeze
+  SIZE_DESCRIPTORS = %w(large big small giant massive tiny little).freeze
+  CREATURE_DESCRIPTORS= %w(swimming sleeping eating hiding).freeze
 
-  COLORS = %w(blue blueGreen darkCyan electricBlue greenBlue lightCyan lightSeaGreen seaGreen turquoise aqua aquamarine teal cyan gray).freeze
+  COLORS = %w(blue blueGreen darkCyan electricBlue greenBlue lightCyan lightSeaGreen seaGreen turquoise aqua aquamarine teal cyan gray darkBlue cerulean azure lapis navy).freeze
 
   extend self
 
@@ -44,8 +44,7 @@ module DOUsername
   end
 
   def random_descriptor(noun)
-    descriptors = DESCRIPTORS.dup
-    descriptors += SIZE_DESCRIPTORS unless noun.start_with?('giant')
+    descriptors = DESCRIPTORS + SIZE_DESCRIPTORS
     descriptors += CREATURE_DESCRIPTORS if SEA_CREATURES.include?(noun)
     descriptors.sample
   end
