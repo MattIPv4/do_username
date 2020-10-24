@@ -1,6 +1,16 @@
 #!/usr/bin/env do_username
 
 require 'do_username'
+
+max_size = ARGV[0].to_i
+
+if max_size > 0
+  puts DOUsername.generate(max_size)
+else
+  puts DOUsername.generate
+end
+
+require 'do_username'
 if ARGV.length < 1
     puts DOUsername.generate()
     exit
