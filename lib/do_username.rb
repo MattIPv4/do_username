@@ -2,15 +2,20 @@ module DOUsername
   SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl).freeze
   SEA_OBJECTS = %w(boat ship submarine yacht dinghy raft kelp seaweed anchor).freeze
 
-  DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly floating drifting).freeze
+  ADJECTIVE_DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly floating drifting).freeze
   SIZE_DESCRIPTORS = %w(large big small giant massive tiny little).freeze
-  CREATURE_DESCRIPTORS= %w(swimming sleeping eating hiding).freeze
+  CREATURE_DESCRIPTORS = %w(swimming sleeping eating hiding).freeze
+
+  SEA_LIST = (SEA_OBJECTS + SEA_CREATURES).freeze
+  DESCRIPTORS = (ADJECTIVE_DESCRIPTORS + SIZE_DESCRIPTORS).freeze
 
   COLORS = %w(blue blueGreen darkCyan electricBlue greenBlue lightCyan lightSeaGreen seaGreen turquoise aqua aquamarine teal cyan gray darkBlue cerulean azure lapis navy).freeze
 
   extend self
 
   def generate(max_size = 30)
+    raise ArgumentError, 'The max_size argument must be an integer number greater than zero.' if max_size.to_i <= 0
+
     # Choose a noun first
     noun = random_noun
 
@@ -40,13 +45,13 @@ module DOUsername
   private
 
   def random_noun
-    (SEA_OBJECTS + SEA_CREATURES).sample
+    SEA_LIST.sample
   end
 
   def random_descriptor(noun)
-    descriptors = DESCRIPTORS + SIZE_DESCRIPTORS
-    descriptors += CREATURE_DESCRIPTORS if SEA_CREATURES.include?(noun)
-    descriptors.sample
+    return DESCRIPTORS.sample unless SEA_CREATURES.include?(noun)
+
+    (DESCRIPTORS + CREATURE_DESCRIPTORS).sample
   end
 
   def random_color
