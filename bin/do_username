@@ -1,11 +1,11 @@
-#!/usr/bin/env do_username
+#!/usr/bin/env ruby
 
 require 'do_username'
 
-max_size = ARGV[0].to_i
+max_size = begin
+             Integer(ARGV[0])
+           rescue ArgumentError
+             ARGV[0]
+           end
 
-if max_size > 0
-  puts DOUsername.generate(max_size)
-else
-  puts DOUsername.generate
-end
+puts DOUsername.generate(max_size)
