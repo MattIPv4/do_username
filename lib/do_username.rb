@@ -24,7 +24,7 @@ module DOUsername
     raise ArgumentError, 'The max_size argument must be an integer number greater than zero.' if max_size.to_i <= 0
 
     # Choose a noun first
-    noun = random_noun
+       noun = random_noun
 
     # Choose a descriptor
     descriptor = random_descriptor(noun)
