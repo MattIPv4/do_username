@@ -41,8 +41,5 @@ jobs:
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-      - name: Build and test
-        run: |
-          RAILS_ENV=test bundle exec rails db:create
-          RAILS_ENV=test bundle exec rails db:migrate
-          bundle exec rspec
+      - name: Testing
+        run: bundle exec rspec
