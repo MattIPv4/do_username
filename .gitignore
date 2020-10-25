@@ -1,3 +1,5 @@
 .idea
-*.gem
-.rspec_status
+
+# Ruby gem
+ruby/*.gem
+ruby/.rspec_status
