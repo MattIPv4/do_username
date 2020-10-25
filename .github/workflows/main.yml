@@ -3,7 +3,7 @@ name: Continuous Integration
 on: [pull_request]
 
 env:
-  RUBY_VERSION: 2.7.2
+  RUBY_VERSION: 2.7
   RUBOCOP_VERSION: 0.90.0
 
 jobs:
