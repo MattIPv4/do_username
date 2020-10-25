@@ -54,33 +54,31 @@ RSpec.describe DOUsername do
     end
 
     context 'with max_size argument' do
-      it 'responds with valid username based on sent size' do
+      before do
+        stub_const('DOUsername::DESCRIPTORS', ['cute'])
+        stub_const('DOUsername::SEA_LIST', ['walrus'])
+        stub_const('DOUsername::COLORS', ['red'])
+        stub_const('DOUsername::SEA_CREATURES', [])
+      end
+
+      it 'responds with username shorter than or equal to given size' do
         expect(subject.generate(15).size).to be <= 15
       end
 
-      context 'when max_size is lower than the full combination' do
-        before do
-          stub_const('DOUsername::DESCRIPTORS', ['cute'])
-          stub_const('DOUsername::SEA_LIST', ['walrus'])
-          stub_const('DOUsername::COLORS', ['red'])
-          stub_const('DOUsername::SEA_CREATURES', [])
-        end
+      it 'responds with full combination when appropriate' do
+        expect(subject.generate(100)).to eq('CuteRedWalrus')
+      end
 
-        it 'responds with full combination (descriptor + color + noun)' do
-          expect(subject.generate(100)).to eq('CuteRedWalrus')
-        end
+      it 'responds with descriptor + noun when appropriate' do
+        expect(subject.generate(12)).to eq('CuteWalrus')
+      end
 
-        it 'responds with (descriptor + noun) username based' do
-          expect(subject.generate(12)).to eq('CuteWalrus')
-        end
+      it 'responds with color + noun when appropriate' do
+        expect(subject.generate(9)).to eq('RedWalrus')
+      end
 
-        it 'responds with (color + noun) username based' do
-          expect(subject.generate(9)).to eq('RedWalrus')
-        end
-
-        it 'responds with part of noun username' do
-          expect(subject.generate(5)).to eq('Walru')
-        end
+      it 'responds with part of the noun when appropriate' do
+        expect(subject.generate(5)).to eq('Walru')
       end
 
       context 'when is invalid' do
@@ -184,6 +182,45 @@ RSpec.describe DOUsername do
     context 'with a string with existing uppercase characters' do
       it 'does not force existing characters to lowercase' do
         expect(subject.send(:format, 'testTesting')).to eq('TestTesting')
+      end
+    end
+  end
+
+  describe '#combine_username' do
+    subject { described_class }
+
+    context 'when max_size allows for the full combination' do
+      it 'responds with full combination (descriptor + color + noun)' do
+        expect(subject.send(:combine_username, 100, 'Swimming', 'Red', 'Walrus'))
+          .to eq('SwimmingRedWalrus')
+      end
+    end
+
+    context 'when max_size allows for the descriptor and noun' do
+      it 'responds with the descriptor + noun combination' do
+        expect(subject.send(:combine_username, 14, 'Swimming', 'Red', 'Walrus'))
+          .to eq('SwimmingWalrus')
+      end
+    end
+
+    context 'when max_size allows for the color and noun' do
+      it 'responds with the colors + noun combination' do
+        expect(subject.send(:combine_username, 9, 'Swimming', 'Red', 'Walrus'))
+          .to eq('RedWalrus')
+      end
+    end
+
+    context 'when max_size allows for the noun' do
+      it 'responds with just the noun' do
+        expect(subject.send(:combine_username, 6, 'Swimming', 'Red', 'Walrus'))
+          .to eq('Walrus')
+      end
+    end
+
+    context 'when max_size is shorter than the noun' do
+      it 'responds with the noun trimmed to the max size' do
+        expect(subject.send(:combine_username, 4, 'Swimming', 'Red', 'Walrus'))
+          .to eq('Walr')
       end
     end
   end
