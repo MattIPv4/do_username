@@ -3,6 +3,7 @@ name: Continuous Integration
 on: [pull_request]
 
 env:
+  RUBY_VERSION: 2.7
   RUBOCOP_VERSION: 0.90.0
 
 jobs:
@@ -16,3 +17,29 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
           rubocop_version: ${{ env.RUBOCOP_VERSION }}
+
+  rspec:
+    name: RSpec
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        ports: ['5432:5432']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Bundle install
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Run tests
+        run: bundle exec rspec
