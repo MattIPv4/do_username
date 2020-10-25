@@ -1,5 +1,5 @@
 RSpec.describe DOUsername do
-  describe '.generate' do
+  describe '#generate' do
     subject { described_class }
 
     # Please update this spec if module constants are updated
@@ -98,6 +98,18 @@ RSpec.describe DOUsername do
           end.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
         end
       end
+    end
+  end
+
+  describe '#random_noun' do
+    subject { described_class }
+
+    before do
+      stub_const('DOUsername::SEA_LIST', ['walrus'])
+    end
+
+    it 'returns an item from the list of creatures and objects' do
+      expect(subject.send(:random_noun)).to eq('walrus')
     end
   end
 end
