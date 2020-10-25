@@ -112,4 +112,49 @@ RSpec.describe DOUsername do
       expect(subject.send(:random_noun)).to eq('walrus')
     end
   end
+
+  describe '#random_descriptor' do
+    subject { described_class }
+
+    context 'when the noun is a sea object' do
+      # This doesn't completely test that this can't return a value from
+      # CREATURE_DESCRIPTORS, just that it returns a value from DESCRIPTORS
+      before do
+        stub_const('DOUsername::SEA_CREATURES', [])
+        stub_const('DOUsername::DESCRIPTORS', ['cute'])
+      end
+
+      it 'returns an item from the list of descriptors' do
+        expect(subject.send(:random_descriptor, 'walrus')).to eq('cute')
+      end
+    end
+
+    context 'when the noun is a sea creature' do
+      before do
+        stub_const('DOUsername::SEA_CREATURES', ['walrus'])
+      end
+
+      context 'with creature descriptors present' do
+        before do
+          stub_const('DOUsername::DESCRIPTORS', [])
+          stub_const('DOUsername::CREATURE_DESCRIPTORS', ['huge'])
+        end
+
+        it 'returns an item from the list of creature descriptors' do
+          expect(subject.send(:random_descriptor, 'walrus')).to eq('huge')
+        end
+      end
+
+      context 'with generic descriptors present' do
+        before do
+          stub_const('DOUsername::DESCRIPTORS', ['cute'])
+          stub_const('DOUsername::CREATURE_DESCRIPTORS', [])
+        end
+
+        it 'returns an item from the list of descriptors' do
+          expect(subject.send(:random_descriptor, 'walrus')).to eq('cute')
+        end
+      end
+    end
+  end
 end
