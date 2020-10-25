@@ -1,15 +1,22 @@
 module DOUsername
-  SEA_CREATURES = %w(walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl).freeze
-  SEA_OBJECTS = %w(boat ship submarine yacht dinghy raft kelp seaweed anchor).freeze
+  SEA_CREATURES = %w[
+    walrus seal fish shark clam coral whale crab lobster starfish eel dolphin
+    squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin
+    anemone morel axolotl
+  ].freeze
+  SEA_OBJECTS = %w[boat ship submarine yacht dinghy raft kelp seaweed anchor].freeze
 
-  ADJECTIVE_DESCRIPTORS = %w(cute adorable lovable happy sandy bubbly friendly floating drifting).freeze
-  SIZE_DESCRIPTORS = %w(large big small giant massive tiny little).freeze
-  CREATURE_DESCRIPTORS = %w(swimming sleeping eating hiding).freeze
+  ADJECTIVE_DESCRIPTORS = %w[cute adorable lovable happy sandy bubbly friendly floating drifting].freeze
+  SIZE_DESCRIPTORS = %w[large big small giant massive tiny little].freeze
+  CREATURE_DESCRIPTORS = %w[swimming sleeping eating hiding].freeze
 
   SEA_LIST = (SEA_OBJECTS + SEA_CREATURES).freeze
   DESCRIPTORS = (ADJECTIVE_DESCRIPTORS + SIZE_DESCRIPTORS).freeze
 
-  COLORS = %w(blue blueGreen darkCyan electricBlue greenBlue lightCyan lightSeaGreen seaGreen turquoise aqua aquamarine teal cyan gray darkBlue cerulean azure lapis navy).freeze
+  COLORS = %w[
+    blue blueGreen darkCyan electricBlue greenBlue lightCyan lightSeaGreen seaGreen
+    turquoise aqua aquamarine teal cyan gray darkBlue cerulean azure lapis navy
+  ].freeze
 
   extend self
 
@@ -30,16 +37,7 @@ module DOUsername
     descriptor = format(descriptor)
     color = format(color)
 
-    # Combine to create username shorter than or equal to given length
-    if (descriptor + color + noun).length <= max_size
-      descriptor + color + noun
-    elsif (descriptor + noun).length <= max_size
-      descriptor + noun
-    elsif (color + noun).length <= max_size
-      color + noun
-    else
-      noun[0...max_size]
-    end
+    combine_username(max_size, descriptor, color, noun)
   end
 
   private
@@ -60,5 +58,18 @@ module DOUsername
 
   def format(string)
     string[0].upcase + string[1..-1]
+  end
+
+  def combine_username(max_size, descriptor, color, noun)
+    # Combine to create username shorter than or equal to given length
+    if (descriptor + color + noun).length <= max_size
+      descriptor + color + noun
+    elsif (descriptor + noun).length <= max_size
+      descriptor + noun
+    elsif (color + noun).length <= max_size
+      color + noun
+    else
+      noun[0...max_size]
+    end
   end
 end

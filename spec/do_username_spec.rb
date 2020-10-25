@@ -5,8 +5,8 @@ RSpec.describe DOUsername do
     # Please update this spec if module constants are updated
     # see more at: https://github.com/MattIPv4/do_username/pull/8
     it 'responds with different usernames based on srand' do
-      [
-        'HappyElectricBlueBoat', 'DriftingAquaShark', 'MassiveTurquoiseWhale'
+      %w[
+        HappyElectricBlueBoat DriftingAquaShark MassiveTurquoiseWhale
       ].each_with_index do |username, i|
         srand i
 
@@ -32,7 +32,7 @@ RSpec.describe DOUsername do
 
     context 'with descriptor part' do
       before do
-        stub_const('DOUsername::DESCRIPTORS', ['cute', 'huge'])
+        stub_const('DOUsername::DESCRIPTORS', %w[cute huge])
         stub_const('DOUsername::CREATURE_DESCRIPTORS', ['swimming'])
       end
 
@@ -73,7 +73,7 @@ RSpec.describe DOUsername do
         it 'responds with (color + noun) username based' do
           expect(subject.generate(9)).to eq('RedWalrus')
         end
-        
+
         it 'responds with part of noun username' do
           expect(subject.generate(5)).to eq('Walru')
         end
@@ -81,21 +81,21 @@ RSpec.describe DOUsername do
 
       context 'when is invalid' do
         it 'raises ArgumentError negative values' do
-          expect {
+          expect do
             subject.generate(-99)
-          }.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
+          end.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
         end
 
         it 'raises ArgumentError for zero' do
-          expect {
+          expect do
             subject.generate(0)
-          }.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
+          end.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
         end
 
         it 'raises ArgumentError for non-integer values' do
-          expect {
+          expect do
             subject.generate('abc')
-          }.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
+          end.to raise_error(ArgumentError, 'The max_size argument must be an integer number greater than zero.')
         end
       end
     end
