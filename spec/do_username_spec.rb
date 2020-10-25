@@ -22,6 +22,10 @@ RSpec.describe DOUsername do
       expect(subject.generate.scan(/[A-Z]/).size).to be >= 3
     end
 
+    it 'responds with whitespace-free string' do
+      expect(subject.generate.scan(/\s/).size).to be 0
+    end
+
     context 'with noun part' do
       before { stub_const('DOUsername::SEA_LIST', ['walrus']) }
 
@@ -32,12 +36,12 @@ RSpec.describe DOUsername do
 
     context 'with descriptor part' do
       before do
-        stub_const('DOUsername::DESCRIPTORS', %w[cute huge])
-        stub_const('DOUsername::CREATURE_DESCRIPTORS', ['swimming'])
+        stub_const('DOUsername::DESCRIPTORS', ['cute'])
+        stub_const('DOUsername::SEA_CREATURES', [])
       end
 
-      it 'has descriptor in generated username' do
-        expect(subject.generate).to match(/Cute|Huge|Swimming/)
+      it 'starts with a descriptor' do
+        expect(subject.generate).to start_with('Cute')
       end
     end
 
@@ -45,7 +49,7 @@ RSpec.describe DOUsername do
       before { stub_const('DOUsername::COLORS', ['blue']) }
 
       it 'contains a color in generated username' do
-        expect(subject.generate).to match(/Blue/)
+        expect(subject.generate).to include('Blue')
       end
     end
 
