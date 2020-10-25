@@ -169,4 +169,18 @@ RSpec.describe DOUsername do
       expect(subject.send(:random_color)).to eq('red')
     end
   end
+
+  describe '#format' do
+    subject { described_class }
+
+    it 'sets the first character to be uppercase' do
+      expect(subject.send(:format, 'test')).to eq('Test')
+    end
+
+    context 'with a string with existing uppercase characters' do
+      it 'does not force existing characters to lowercase' do
+        expect(subject.send(:format, 'testTesting')).to eq('TestTesting')
+      end
+    end
+  end
 end
