@@ -3,7 +3,6 @@ name: Continuous Integration
 on: [pull_request]
 
 env:
-  RUBY_VERSION: 2.7
   RUBOCOP_VERSION: 0.90.0
 
 jobs:
@@ -23,9 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get ruby version
+        id: ruby_version
+        run: echo "##[set-output name=RUBY_VERSION;]$(cat .ruby-version | cut -c1-3)"
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: ${{ env.RUBY_VERSION }}
+          ruby-version: '${{ steps.ruby_version.outputs.RUBY_VERSION }}'
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
