@@ -2,32 +2,21 @@
 
 A DigitalOcean-community-themed username generator.
 
-https://rubygems.org/gems/do_username
+## Ruby
 
-## Install
+[README](ruby/README.md)
+
+https://rubygems.org/gems/do_username
 
 `gem install do_username`
 
-Or, with bundler:
+## JavaScript
 
-`bundle add do_username`
+[README](javascript/README.md)
 
-## Example
+https://www.npmjs.com/package/do_username
 
-```ruby
-require 'do_username'
-
-# Generate a random username with a max length of 30 characters
-puts DOUsername.generate
-
-# Generate a random username with a max length of 15 characters
-puts DOUsername.generate(15)
-```
-
-```text
-AdorableBlueGreenKelp
-LargeStarfish
-```
+`npm install do_username`
 
 ## License
 
