@@ -1,0 +1,9 @@
+{
+  "name": "do_username",
+  "version": "0.0.1",
+  "description": "DigitalOcean Username Generator",
+  "main": "lib/do_username.js",
+  "scripts": {},
+  "author": "DigitalOcean, Matt Cowley",
+  "license": "Apache-2.0"
+}
