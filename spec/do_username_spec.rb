@@ -26,7 +26,7 @@ RSpec.describe DOUsername do
       before { stub_const('DOUsername::SEA_LIST', ['walrus']) }
 
       it 'ends with a sea object or a creature' do
-        expect(subject.generate).to end_with('Walrus xxx')
+        expect(subject.generate).to end_with('Walrus')
       end
     end
 
