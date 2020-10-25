@@ -157,4 +157,16 @@ RSpec.describe DOUsername do
       end
     end
   end
+
+  describe '#random_color' do
+    subject { described_class }
+
+    before do
+      stub_const('DOUsername::COLORS', ['red'])
+    end
+
+    it 'returns an item from the list of colors' do
+      expect(subject.send(:random_color)).to eq('red')
+    end
+  end
 end
