@@ -3,3 +3,5 @@
 # Ruby gem
 ruby/*.gem
 ruby/.rspec_status
+
+javascript/node_modules

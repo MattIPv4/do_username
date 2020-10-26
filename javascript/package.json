@@ -10,5 +10,11 @@
   "homepage": "https://github.com/MattIPv4/do_username/tree/master/javascript#readme",
   "bugs": "https://github.com/MattIPv4/do_username/issues",
   "author": "DigitalOcean, Matt Cowley",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^26.6.1"
+  }
 }
