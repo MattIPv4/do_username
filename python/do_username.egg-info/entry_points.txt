@@ -1,0 +1,4 @@
+[console_scripts]
+do-username = do_username.__main__:main
+do_username = do_username.__main__:main
+

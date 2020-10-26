@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: do-username
+Version: 1.0.2
+Summary: A Digital Ocean Community themed username generator
+Home-page: https://github.com/shreyas44/do_username_py
+Author: Shreyas
+Author-email: shreyas.sreenivasa@gmail.com
+License: MIT
+Description: # do-username
+        
+        A DigitalOcean-community-themed username generator - the Python version.
+        
+        https://pypi.org/project/do-username/
+        
+        ### Usage
+        
+        Run `pip3 install do-username` to install the package
+        
+        After installing, run `do-username` to generate a random username or `do-username <max_characters>` to generate a username with max character.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
