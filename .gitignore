@@ -12,3 +12,4 @@ python/lib
 python/dist
 python/.Python
 python/include
+python/build
