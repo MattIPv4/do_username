@@ -1,5 +1,14 @@
 .idea
+.DS_Store
 
 # Ruby gem
 ruby/*.gem
 ruby/.rspec_status
+
+# Python
+
+python/bin
+python/lib
+python/dist
+python/.Python
+python/include
