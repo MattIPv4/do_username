@@ -63,7 +63,7 @@ const combineUsername = (maxSize, descriptor, color, noun) => {
         return noun.slice(0, maxSize);
 };
 
-const generate = module.exports.generate = (maxSize = 30) => {
+module.exports.generate = (maxSize = 30) => {
     let noun = randomNoun();
     let descriptor = randomDescriptor(noun);
     let color = randomColor();
