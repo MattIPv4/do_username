@@ -1,6 +1,6 @@
 {
   "name": "do_username",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "DigitalOcean Username Generator",
   "main": "lib/do_username.js",
   "repository": {
