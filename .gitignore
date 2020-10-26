@@ -13,3 +13,4 @@ python/dist
 python/.Python
 python/include
 python/build
+*.egg-info
