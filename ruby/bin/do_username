@@ -2,10 +2,10 @@
 
 require 'do_username'
 
-max_size = begin
-             Integer(ARGV[0])
-           rescue ArgumentError
-             ARGV[0]
-           end
+arg = ARGV[0]
 
-puts DOUsername.generate(max_size)
+if arg.nil? || arg.empty?
+  puts DOUsername.generate
+else
+  puts DOUsername.generate(Integer(arg))
+end
