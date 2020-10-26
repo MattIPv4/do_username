@@ -1,7 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'do_username'
-  s.version     = '0.0.2'
-  s.date        = '2020-10-22'
+  s.version     = '0.0.3'
   s.summary     = 'DigitalOcean Username Generator'
   s.description = 'A DigitalOcean-community-themed username generator.'
   s.authors     = ['DigitalOcean', 'Matt Cowley']
