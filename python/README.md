@@ -12,14 +12,14 @@ https://pypi.org/project/do-username/
 
 ### Using the CLI
 
-`do-username` to generate a username with max length of 30 characters
+`do_username` to generate a username with max length of 30 characters
 
-`do-username 15` to generate a username with max length of 15 characters
+`do_username 15` to generate a username with max length of 15 characters
 
 ### As a python module
 
 ```python
-from do_username.generate import generate
+from do_username import generate
 
 # Generate a random username with max length of 30 characters
 print(generate())
@@ -30,4 +30,4 @@ print(generate(15))
 
 ## License
 
-This project is licensed under [Apache 2.0](/python/LICENSE)
+This project is licensed under [Apache 2.0](LICENSE)

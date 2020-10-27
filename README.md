@@ -65,7 +65,7 @@ https://www.npmjs.com/package/do_username
 
 https://pypi.org/project/do-username/
 
-`pip3 install do-username`
+`pip3 install do_username`
 
 ## License
 
