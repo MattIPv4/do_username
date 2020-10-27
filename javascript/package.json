@@ -9,6 +9,13 @@
   },
   "homepage": "https://github.com/MattIPv4/do_username/tree/master/javascript#readme",
   "bugs": "https://github.com/MattIPv4/do_username/issues",
+  "scripts": {
+    "lint": "eslint lib/**/*.js",
+    "lint:fix": "eslint lib/**/*.js --fix"
+  },
   "author": "DigitalOcean, Matt Cowley",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^7.12.0"
+  }
 }
