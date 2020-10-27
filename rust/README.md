@@ -16,7 +16,6 @@ use do_username::do_username;
 
 fn main() {
     // Generate a random username
-    println!("{}", do_username::get());
+    println!("{}", do_username::generate());
 }
-
 ```
