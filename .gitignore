@@ -3,3 +3,6 @@
 # Ruby gem
 ruby/*.gem
 ruby/.rspec_status
+
+# Simplecov output folder
+coverage
