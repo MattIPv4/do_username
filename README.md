@@ -8,20 +8,20 @@ The [Ruby gem](ruby) acts as the main implementation, with all other
 implementations porting and mirroring the interface that the Ruby gem offers.
 
 All implementations will provide the `generate` method. This method shall have a
-single, _optional_ argument that defines the maximum (inclusive) size of the
+single, *optional* argument that defines the maximum (inclusive) size of the
 generated username. The default value for this argument shall be `30`.
 
-All implementations will provide a set of (frozen) constants that are arrays of
+All implementations will provide a set of (frozen) constants  that are arrays of
 strings, with all the parts used randomly during username generation:
 
-- `SEA_CREATURES`, all the creature _nouns_.
-- `SEA_OBJECTS`, all the misc. object _nouns_.
-- `ADJECTIVE_DESCRIPTORS`, _descriptors_ for all nouns (creatures + objects).
-- `SIZE_DESCRIPTORS`, _descriptors_ for all nouns (creatures + objects).
-- `CREATURE_DESCRIPTORS`, _descriptors_ specific to creature nouns.
-- `SEA_LIST`, a combination of the creature + object _nouns_.
-- `DESCRIPTORS`, a combination of the generic (adjective + size) _descriptors_.
-- `COLORS`, all possible (sea-related) _colors_.
+- `SEA_CREATURES`, all the creature *nouns*.
+- `SEA_OBJECTS`, all the misc. object *nouns*.
+- `ADJECTIVE_DESCRIPTORS`, *descriptors* for all nouns (creatures + objects).
+- `SIZE_DESCRIPTORS`, *descriptors* for all nouns (creatures + objects).
+- `CREATURE_DESCRIPTORS`, *descriptors* specific to creature nouns.
+- `SEA_LIST`, a combination of the creature + object *nouns*.
+- `DESCRIPTORS`, a combination of the generic (adjective + size) *descriptors*.
+- `COLORS`, all possible (sea-related) *colors*.
 
 All generated usernames will be in CamelCase with no whitespace present.
 Usernames are formed from 1 to 3 parts, a random `noun`, a random `descriptor`,
@@ -31,13 +31,13 @@ case preserved from the source string (e.g. `scubaDiver` -> `ScubaDiver`). These
 parts are concatenated to form the final username with the following strategy:
 
 1. If the combination of `descriptor + color + noun` is less than or equal to
-   the max length, return that value.
+the max length, return that value.
 2. Else, if the combination of `descriptor + noun` is less than or equal to the
-   max length, return that value.
+max length, return that value.
 3. Else, if the combination of `color + noun` is less than or equal to the max
-   length, return that value.
+length, return that value.
 4. Else, return just the `noun`, trimmed to the max length set (may be the full
-   string).
+string).
 
 Both the `generate` method and the constants should be provided as part of a
 module (or as static methods/constants in a class) named `DOUsername`, such that
@@ -69,4 +69,4 @@ https://pypi.org/project/do-username/
 
 ## License
 
-This project is licensed under [Apache 2.0](LICENSE)
+This project is licensed under [Apache 2.0](LICENSE) 
