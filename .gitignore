@@ -13,4 +13,5 @@ python/dist
 python/.Python
 python/include
 python/build
-*.egg-info
+python/*.egg-info
+python/*/__pycache__
