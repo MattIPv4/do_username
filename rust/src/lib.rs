@@ -20,42 +20,42 @@ pub mod do_username {
 		}
 		new_arr.join("")
 	}
-
-	pub fn get() -> String {
-		let sea_creatures = vec!["walrus", "seal", "fish", "shark", "clam", "coral", "whale", "crab", "lobster", "starfish", "eel", "dolphin", "squid", "jellyfish", "ray", "shrimp", "mantaRay", "angler", "snorkler", "scubaDiver", "urchin", "anemone", "morel", "axolotl"];
-		let sea_objects = vec!["boatShip", "submarine", "yacht", "dinghy", "raft", "kelp", "seaweed", "anchor"];
-		let adjectives = vec!["cute", "adorable", "lovable", "happy", "sandy", "bubbly", "friendly", "floating", "drifting"];
-		let mut size= vec!["large", "big", "small", "giant", "massive", "tiny", "little", "yuge"];
-		let mut verbs = vec!["swimming", "sleeping", "eating", "hiding"];
-		let colors = vec!["blue", "blueGreen", "darkCyan", "electricBlue", "greenBlue", "lightCyan", "lightSeaGreen", "seaGreen", "turquoise", "aqua", "aquamarine", "teal", "cyan", "gray", "darkBlue", "cerulean", "azure", "lapis", "navy"];
+	pub const SEA_CREATURES: [&str; 24] = ["walrus", "seal", "fish", "shark", "clam", "coral", "whale", "crab", "lobster", "starfish", "eel", "dolphin", "squid", "jellyfish", "ray", "shrimp", "mantaRay", "angler", "snorkler", "scubaDiver", "urchin", "anemone", "morel", "axolotl"];
+	pub const SEA_OBJECTS: [&str; 8] = ["boatShip", "submarine", "yacht", "dinghy", "raft", "kelp", "seaweed", "anchor"];
+	pub const ADJECTIVE_DESCRIPTORS: [&str; 9] = ["cute", "adorable", "lovable", "happy", "sandy", "bubbly", "friendly", "floating", "drifting"];
+	pub const SIZE_DESCRIPTORS: [&str; 8] = ["large", "big", "small", "giant", "massive", "tiny", "little", "yuge"];
+	pub const CREATURE_DESCRIPTORS: [&str; 4] = ["swimming", "sleeping", "eating", "hiding"];
+	pub const COLORS: [&str; 19] = ["blue", "blueGreen", "darkCyan", "electricBlue", "greenBlue", "lightCyan", "lightSeaGreen", "seaGreen", "turquoise", "aqua", "aquamarine", "teal", "cyan", "gray", "darkBlue", "cerulean", "azure", "lapis", "navy"];
 	
-		let mut sea_list = sea_objects;
-		let mut descriptors = adjectives;
+	pub fn generate(size: Option<usize>) -> String {
+		let max_size = size.unwrap_or(30);
+		let mut sea_list = SEA_OBJECTS.to_vec();
+		let mut descriptors = ADJECTIVE_DESCRIPTORS.to_vec();
 		
-		sea_list.append(&mut sea_creatures.clone());
-		descriptors.append(&mut size);
-
+		sea_list.extend(&SEA_CREATURES);
+		descriptors.extend(&SIZE_DESCRIPTORS);
+	
 		let mut descriptors_and_verbs = descriptors.clone();
-		descriptors_and_verbs.append(&mut verbs);
-
-		let rand_noun = random(sea_list);
-		let rand_color = random(colors);
+		descriptors_and_verbs.extend(&CREATURE_DESCRIPTORS);
+	
+		let rand_noun = random(sea_list.to_vec());
+		let rand_color = random(COLORS.to_vec());
 		
 		let rand_desc: &str;
-		if sea_creatures.contains(&rand_noun) {
+		if SEA_CREATURES.contains(&rand_noun) {
 			rand_desc = random(descriptors_and_verbs);
 		} else {
 			rand_desc = random(descriptors);
 		}
 
-		if format!("{}{}{}", rand_desc, rand_color, rand_noun).len() <= 30 {
+		if format!("{}{}{}", rand_desc, rand_color, rand_noun).len() <= max_size {
 			return up_format(vec![rand_desc, rand_color, rand_noun])
-		} else if format!("{}{}", rand_desc, rand_noun).len() <= 30 {
+		} else if format!("{}{}", rand_desc, rand_noun).len() <= max_size {
 			return up_format(vec![rand_desc, rand_noun])
-		} else if format!("{}{}", rand_color, rand_noun).len() <= 30 {
+		} else if format!("{}{}", rand_color, rand_noun).len() <= max_size {
 			return up_format(vec![rand_color, rand_noun])
 		} else {
-			return up_format(vec![rand_noun])
+			return up_format(vec![rand_noun])[..max_size].to_string()
 		}
 	}
 }

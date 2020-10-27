@@ -8,6 +8,7 @@ Cargo.toml
 ```toml
 do_username = "0.1.0"
 ```
+
 ## Example
 
 ```rust
