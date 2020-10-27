@@ -4,8 +4,30 @@ A DigitalOcean-community-themed username generator - the Python version.
 
 https://pypi.org/project/do-username/
 
-### Usage
+## Install
 
-Run `pip3 install do-username` to install the package
+`pip3 install do-username`
 
-After installing, run `do-username` to generate a random username or `do-username <max_characters>` to generate a username with max character.
+## Example
+
+### Using the CLI:
+
+`do-username` to generate a username with max length of 30 characters
+
+`do-username 15` to generate a username with max length of 15 characters
+
+### As a python module:
+
+```python
+from do_username.generate import generate
+
+# Generate a random username with max length of 30 characters
+print(generate())
+
+# Generate a random username with max length of 15 characters
+print(generate(15))
+```
+
+## License
+
+This project is licensed under [Apache 2.0](/python/LICENSE)
