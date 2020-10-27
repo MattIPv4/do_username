@@ -1,8 +1,9 @@
 require 'bundler/setup'
-require 'do_username'
-
 require 'simplecov'
+SimpleCov.minimum_coverage 100
 SimpleCov.start
+
+require 'do_username'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
