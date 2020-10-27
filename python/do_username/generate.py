@@ -3,7 +3,7 @@ import random
 SEA_CREATURES = tuple("walrus seal fish shark clam coral whale crab lobster starfish eel dolphin squid jellyfish ray shrimp mantaRay angler snorkler scubaDiver urchin anemone morel axolotl".split(" "))
 SEA_OBJECTS = tuple("boat ship submarine yacht dinghy raft kelp seaweed anchor".split(" "))
 ADJECTIVE_DESCRIPTORS = tuple("cute adorable lovable happy sandy bubbly friendly floating drifting".split(" "))
-SIZE_DESCRIPTION = tuple("large big small giant massive tiny little yuge".split(" "))
+SIZE_DESCRIPTION = tuple("large big small giant massive tiny little".split(" "))
 CREATURE_DESCRIPTORS = tuple("swimming sleeping eating hiding".split(" "))
 
 SEA_LIST = SEA_CREATURES + SEA_OBJECTS
