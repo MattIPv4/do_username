@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.files       = ['lib/do_username.rb']
   s.homepage    = 'https://github.com/MattIPv4/do_username/tree/master/ruby#readme'
   s.license     = 'Apache-2.0'
+  s.executables = ['do_username']
   s.metadata    = {
     'bug_tracker_uri' => 'https://github.com/MattIPv4/do_username/issues',
     'homepage_uri' => 'https://github.com/MattIPv4/do_username/tree/master/ruby#readme',

@@ -29,6 +29,21 @@ AdorableBlueGreenKelp
 LargeStarfish
 ```
 
+## CLI
+
+```bash
+# Call the CLI command with a max length of 30 characters
+$ do_username
+
+# Call the CLI command with a max length of 10 characters
+$ do_username 10 
+```
+
+```text
+GiantBlueGreenScubaDiver
+BlueMorel
+```
+
 ## License
 
 This project is licensed under [Apache 2.0](LICENSE) 
