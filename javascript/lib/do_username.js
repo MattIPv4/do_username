@@ -24,11 +24,11 @@ const CREATURE_DESCRIPTORS = module.exports.CREATURE_DESCRIPTORS = Object.freeze
 ]);
 
 const SEA_LIST = module.exports.SEA_LIST = Object.freeze(
-    SEA_OBJECTS.concat(SEA_CREATURES)
+    SEA_OBJECTS.concat(SEA_CREATURES),
 );
 
 const DESCRIPTORS = module.exports.DESCRIPTORS = Object.freeze(
-    ADJECTIVE_DESCRIPTORS.concat(SIZE_DESCRIPTORS)
+    ADJECTIVE_DESCRIPTORS.concat(SIZE_DESCRIPTORS),
 );
 
 const COLORS = module.exports.COLORS = Object.freeze([
@@ -63,7 +63,7 @@ const combineUsername = (maxSize, descriptor, color, noun) => {
         return noun.slice(0, maxSize);
 };
 
-const generate = module.exports.generate = (maxSize = 30) => {
+module.exports.generate = (maxSize = 30) => {
     let noun = randomNoun();
     let descriptor = randomDescriptor(noun);
     let color = randomColor();
