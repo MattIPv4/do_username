@@ -22,6 +22,6 @@ And import it like you normaly would.
 
 To preview all files that will be included in the published module, run `cargo publish --dry-run`.
 
-## 4. Publish to NPM
+## 4. Publish to Crates.io
 
 Publish the new version of the module with `cargo publish`.
