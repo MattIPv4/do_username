@@ -17,6 +17,14 @@ random_color = lambda: random.choice(COLORS)
 format = lambda *array: "".join(map(lambda word: word[0].upper() + word[1:], array))
 
 def generate(max_size=30):
+  try:
+    max_size = int(max_size)
+    
+    if max_size <= 0:
+      raise ValueError
+  except ValueError:
+    raise ValueError("The max_size argument must be an integer number greater than zero.")
+
   noun = random_noun()
   descriptor = random_descriptor(noun)
   color = random_color()
