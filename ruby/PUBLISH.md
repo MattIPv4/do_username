@@ -18,6 +18,12 @@ New version of the gem can be installed locally with `gem install ./do_username-
 
 Can then be required `require 'do_username'` in `irb` to test.
 
-## 4. Publish to Rubygems
+## 4. Commit & tag
+
+Create a new commit with the version number updates, the commit name should be `xxx-ruby`, where `xxx` is the version.
+
+A tag should be created for this commit with the same name.
+
+## 5. Publish to Rubygems
 
 Push the new version of the gem with `gem push do_username-xxx.gem`.
