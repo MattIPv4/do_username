@@ -16,6 +16,11 @@ use do_username::do_username;
 
 fn main() {
     // Generate a random username
-    println!("{}", do_username::generate());
+    
+    //If you want to set a length use generate(Some(<number>))
+    println!("{}", do_username::generate(Some(10)));
+    
+    //If you want the default lenght (30), use None
+    println!("{}", do_username::generate(None));
 }
 ```
