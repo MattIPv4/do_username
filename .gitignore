@@ -7,3 +7,6 @@ javascript/node_modules
 ruby/*.gem
 ruby/.rspec_status
 ruby/coverage
+
+# Rust crate
+target
