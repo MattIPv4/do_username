@@ -59,6 +59,15 @@ https://www.npmjs.com/package/do_username
 
 `npm install do_username`
 
+### Rust
+
+[README](rust/README.md)
+
+https://crates.io/crates/do_username
+
+Cargo.toml
+`do_username = "1.0.0"`
+
 ## License
 
 This project is licensed under [Apache 2.0](LICENSE) 
