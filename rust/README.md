@@ -6,7 +6,7 @@ A DigitalOcean-community-themed username generator.
 
 Cargo.toml
 ```toml
-do_username = "0.1.0"
+do_username = "1.0.0"
 ```
 
 ## Example
