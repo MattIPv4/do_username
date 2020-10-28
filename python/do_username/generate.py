@@ -14,7 +14,7 @@ COLORS = "blue blueGreen darkCyan electricBlue greenBlue lightCyan lightSeaGreen
 random_noun = lambda: random.choice(SEA_LIST)
 random_descriptor = lambda noun: random.choice(DESCRIPTORS) if noun not in SEA_CREATURES else random.choice(DESCRIPTORS + CREATURE_DESCRIPTORS)
 random_color = lambda: random.choice(COLORS)
-format = lambda array: "".join(map(lambda word: word[0].upper() + word[1:], array))
+format = lambda *array: "".join(map(lambda word: word[0].upper() + word[1:], array))
 
 def generate(max_size=30):
   noun = random_noun()
@@ -22,10 +22,10 @@ def generate(max_size=30):
   color = random_color()
 
   if len(descriptor + noun + color) <= max_size:
-    return format([descriptor, color, noun])
+    return format(descriptor, color, noun)
   elif len(descriptor + noun) <= max_size:
-    return format([descriptor, color])
+    return format(descriptor, color)
   elif len(color + noun) <= max_size:
-    return format([color, noun])
+    return format(color, noun)
   else:
-    return format([noun])[:max_size]
+    return format(noun)[:max_size]
