@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'do_username'
+
+arg = ARGV[0]
+
+if arg.nil? || arg.empty?
+  puts DOUsername.generate
+else
+  puts DOUsername.generate(Integer(arg))
+end
