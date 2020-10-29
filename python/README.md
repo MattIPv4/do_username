@@ -2,11 +2,11 @@
 
 A DigitalOcean-community-themed username generator - the Python version.
 
-https://pypi.org/project/do-username/
+https://pypi.org/project/do_username/
 
 ## Install
 
-`pip3 install do-username`
+`pip3 install do_username`
 
 ## Example
 
