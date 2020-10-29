@@ -35,20 +35,35 @@ func capitalize(arr []string) string {
 	return strings.Join(endArr[:], "")
 }
 
-var seaCreatures = []string{"walrus", "seal", "fish", "shark", "clam", "coral", "whale", "crab", "lobster", "starfish", "eel", "dolphin", "squid", "jellyfish", "ray", "shrimp", "mantaRay", "angler", "snorkler", "scubaDiver", "urchin", "anemone", "morel", "axolotl"}
-var seaObjects = []string{"boat", "ship", "submarine", "yacht", "dinghy", "raft", "kelp", "seaweed", "anchor"}
-var adjectives = []string{"cute", "adorable", "lovable", "happy", "sandy", "bubbly", "friendly", "floating", "drifting"}
-var size = []string{"large", "big", "small", "giant", "massive", "tiny", "little"}
-var verbs = []string{"swimming", "sleeping", "eating", "hiding"}
-var colors = []string{"blue", "blueGreen", "darkCyan", "electricBlue", "greenBlue", "lightCyan", "lightSeaGreen", "seaGreen", "turquoise", "aqua", "aquamarine", "teal", "cyan", "gray", "darkBlue", "cerulean", "azure", "lapis", "navy"}
-var seaList = append(seaCreatures, seaObjects...)
-var descriptors = append(adjectives, size...)
+// SeaCreatures : all the creature nouns
+var SeaCreatures = []string{"walrus", "seal", "fish", "shark", "clam", "coral", "whale", "crab", "lobster", "starfish", "eel", "dolphin", "squid", "jellyfish", "ray", "shrimp", "mantaRay", "angler", "snorkler", "scubaDiver", "urchin", "anemone", "morel", "axolotl"}
+
+// SeaObjects : all the misc. object nouns
+var SeaObjects = []string{"boat", "ship", "submarine", "yacht", "dinghy", "raft", "kelp", "seaweed", "anchor"}
+
+// AdjectiveDescriptors : descriptors for all nouns (creatures + objects)
+var AdjectiveDescriptors = []string{"cute", "adorable", "lovable", "happy", "sandy", "bubbly", "friendly", "floating", "drifting"}
+
+// SizeDescriptors : descriptors for all nouns (creatures + objects)
+var SizeDescriptors = []string{"large", "big", "small", "giant", "massive", "tiny", "little"}
+
+// CreatuteDescriptors : descriptors specific to creature nouns
+var CreatuteDescriptors = []string{"swimming", "sleeping", "eating", "hiding"}
+
+// Colors : all possible (sea-related) colors
+var Colors = []string{"blue", "blueGreen", "darkCyan", "electricBlue", "greenBlue", "lightCyan", "lightSeaGreen", "seaGreen", "turquoise", "aqua", "aquamarine", "teal", "cyan", "gray", "darkBlue", "cerulean", "azure", "lapis", "navy"}
+
+// SeaList : a combination of the creature + object nouns
+var SeaList = append(SeaCreatures, SeaObjects...)
+
+// Descriptors : combination of the generic (adjective + size) descriptors
+var Descriptors = append(AdjectiveDescriptors, SizeDescriptors...)
 
 // generate : Returns a random DO username
 func generate() string {
-	randNoun := random(seaList)
-	randDesc := randomDesc(seaCreatures, randNoun, descriptors, verbs)
-	randColor := random(colors)
+	randNoun := random(SeaList)
+	randDesc := randomDesc(SeaCreatures, randNoun, Descriptors, CreatuteDescriptors)
+	randColor := random(Colors)
 
 	if len(randDesc+randNoun+randColor) <= 30 {
 		return capitalize([]string{randDesc, randColor, randNoun})
