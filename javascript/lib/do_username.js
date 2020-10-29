@@ -1,12 +1,9 @@
 const {
-	SEA_LIST,
-	SEA_CREATURES,
-	SEA_OBJECTS,
-	DESCRIPTORS,
-	ADJECTIVE_DESCRIPTORS,
-	COLORS,
-	CREATURE_DESCRIPTORS,
-	SIZE_DESCRIPTORS,
+    SEA_LIST,
+    SEA_CREATURES,
+    DESCRIPTORS,
+    COLORS,
+    CREATURE_DESCRIPTORS,
 } = require('./constants');
 
 const random = (items) => items[Math.random() * items.length | 0];
@@ -34,9 +31,9 @@ const combineUsername = module.exports.combineUsername = (maxSize, descriptor, c
         return noun.slice(0, maxSize);
 };
 
-const generate = module.exports.generate = (maxSize = 30) => {
-    if(maxSize <= 0 || typeof maxSize !== 'number') {
-        throw new Error('The maxSize argument must be an integer number greater than zero.')
+module.exports.generate = (maxSize = 30) => {
+    if (maxSize <= 0 || typeof maxSize !== 'number') {
+        throw new Error('The maxSize argument must be an integer number greater than zero.');
     }
 
     let noun = randomNoun();
