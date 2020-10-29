@@ -1,4 +1,4 @@
-# do-username
+# do_username
 
 A DigitalOcean-community-themed username generator - the Python version.
 
