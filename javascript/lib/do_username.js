@@ -35,6 +35,10 @@ const combineUsername = module.exports.combineUsername = (maxSize, descriptor, c
 };
 
 const generate = module.exports.generate = (maxSize = 30) => {
+    if(maxSize <= 0 || typeof maxSize !== 'number') {
+        throw new Error('The maxSize argument must be an integer number greater than zero.')
+    }
+
     let noun = randomNoun();
     let descriptor = randomDescriptor(noun);
     let color = randomColor();
