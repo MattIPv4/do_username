@@ -12,9 +12,14 @@ https://pypi.org/project/do_username/
 
 ### Using the CLI
 
-`do_username` to generate a username with max length of 30 characters
+```
+#Call the CLI command with a max length of 30 characters
+$ do_username
 
-`do_username 15` to generate a username with max length of 15 characters
+
+# Call the CLI command with a max length of 15 characters
+$ do_username 10
+```
 
 ### As a python module
 
