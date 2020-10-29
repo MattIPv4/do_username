@@ -1,7 +1,15 @@
 .idea
 
+# JavaScript package
+javascript/node_modules
+
 # Ruby gem
 ruby/*.gem
 ruby/.rspec_status
 
 javascript/node_modules
+
+ruby/coverage
+
+# Rust crate
+target

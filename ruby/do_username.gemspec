@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.files       = ['lib/do_username.rb']
   s.homepage    = 'https://github.com/MattIPv4/do_username/tree/master/ruby#readme'
   s.license     = 'Apache-2.0'
+  s.executables = ['do_username']
   s.metadata    = {
     'bug_tracker_uri' => 'https://github.com/MattIPv4/do_username/issues',
     'homepage_uri' => 'https://github.com/MattIPv4/do_username/tree/master/ruby#readme',
@@ -20,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop', '~> 0.90.0'
   s.add_development_dependency 'rubocop-performance', '~> 1.8'
   s.add_development_dependency 'rubocop-rspec', '~> 1.43'
+  s.add_development_dependency 'simplecov', '~> 0.19.1'
 end
