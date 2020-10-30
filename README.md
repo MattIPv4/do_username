@@ -4,6 +4,32 @@ A DigitalOcean-community-themed username generator.
 
 ## Implementations
 
+### Ruby
+
+[README](ruby/README.md)
+
+https://rubygems.org/gems/do_username
+
+`gem install do_username`
+
+### JavaScript
+
+[README](javascript/README.md)
+
+https://www.npmjs.com/package/do_username
+
+`npm install do_username`
+
+### Rust
+
+[README](rust/README.md)
+
+https://crates.io/crates/do_username
+
+`do_username = "1.0.0"`
+
+### Interface
+
 The [Ruby gem](ruby) acts as the main implementation, with all other
 implementations porting and mirroring the interface that the Ruby gem offers.
 
