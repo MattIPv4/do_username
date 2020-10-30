@@ -30,5 +30,5 @@ To get an API token from PyPi
 
 Publish the package using twine by running `python3 -m twine upload --repository pypi dist/*`
 
-Twine will promt for credentials. Enter the credentials as given by PyPi. Enter *__token__* as your username and for your password enter the token generated in **Step 3**.
+When twine prompts for credentials, enter *__token__* as your username and for your password enter the token generated in **Step 3**.
 
