@@ -16,11 +16,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/ThatCopy/go-do-namegen"
+	"github.com/MattIPv4/do_username/go"
 )
 
 func main() {
-	fmt.Println(dousername.GetName())
+	fmt.Println(dousername.Generate())
 }
 
 ```

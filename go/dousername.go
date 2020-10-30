@@ -11,11 +11,11 @@ func random(arr []string) string {
 	return arr[rand.Intn(len(arr))]
 }
 
-func randomDesc(seaCreaturess []string, randNoun string, descriptors []string, verbs []string) string {
-	if !contains(seaCreaturess, randNoun) {
-		return random(descriptors)
+func randomDesc(randNoun string) string {
+	if !contains(SeaCreatures, randNoun) {
+		return random(Descriptors)
 	}
-	return random(append(descriptors, verbs...))
+	return random(append(Descriptors, CreatuteDescriptors...))
 }
 
 func contains(arr []string, str string) bool {
@@ -59,19 +59,19 @@ var SeaList = append(SeaCreatures, SeaObjects...)
 // Descriptors : combination of the generic (adjective + size) descriptors
 var Descriptors = append(AdjectiveDescriptors, SizeDescriptors...)
 
-// generate : Returns a random DO username
-func generate() string {
+// Generate : Returns a random DO username
+func Generate() string {
 	randNoun := random(SeaList)
-	randDesc := randomDesc(SeaCreatures, randNoun, Descriptors, CreatuteDescriptors)
+	randDesc := randomDesc(randNoun)
 	randColor := random(Colors)
 
 	if len(randDesc+randNoun+randColor) <= 30 {
 		return capitalize([]string{randDesc, randColor, randNoun})
-	} else if len(randDesc+randColor) <= 30 {
-		return capitalize([]string{randDesc, randColor})
+	} else if len(randDesc+randNoun) <= 30 {
+		return capitalize([]string{randDesc, randNoun})
 	} else if len(randColor+randNoun) <= 30 {
-		return capitalize([]string{randColor, randColor})
+		return capitalize([]string{randColor, randNoun})
 	} else {
-		return capitalize([]string{randNoun})
+		return capitalize([]string{randNoun})[0:30]
 	}
 }
