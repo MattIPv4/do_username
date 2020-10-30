@@ -1,4 +1,4 @@
-const { SEA_LIST, SEA_CREATURES, DESCRIPTORS, COLORS, CREATURE_DESCRIPTORS } = require('./constants');
+const { SEA_LIST, SEA_CREATURES, DESCRIPTORS, COLORS, CREATURE_DESCRIPTORS, ADJECTIVE_DESCRIPTORS, SEA_OBJECTS, SIZE_DESCRIPTORS } = require('./constants');
 
 const { randomNoun, randomDescriptor, randomColor, format, combineUsername } = require('./private_functions');
 
@@ -24,5 +24,8 @@ module.exports = {
     DESCRIPTORS,
     COLORS,
     CREATURE_DESCRIPTORS,
+    ADJECTIVE_DESCRIPTORS,
+    SEA_OBJECTS,
+    SIZE_DESCRIPTORS,
     generate,
 };
