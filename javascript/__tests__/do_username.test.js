@@ -1,5 +1,7 @@
 const subject = require('../lib/do_username');
 
+const privateFuncions = require('../lib/private_functions');
+
 beforeEach(() => {
 	jest.resetModules();
 });
@@ -20,125 +22,125 @@ describe('generate', () => {
 	it('responds with whitespace-free string', () => {
 		expect((subject.generate().match(/\s/g) || []).length).toBe(0);
 	});
-});
 
-describe('with noun part', () => {
-	it('ends with a sea object or a creature', () => {
-		jest.doMock('../lib/constants', () => {
-			const actual = jest.requireActual('../lib/constants');
+	describe('with noun part', () => {
+		it('ends with a sea object or a creature', () => {
+			jest.doMock('../lib/constants', () => {
+				const actual = jest.requireActual('../lib/constants');
 
-			return {
-				...actual,
-				SEA_LIST: ['walrus'],
-			};
-		});
+				return {
+					...actual,
+					SEA_LIST: ['walrus'],
+				};
+			});
 
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.generate().endsWith('Walrus')).toBeTruthy();
-	});
-});
-
-describe('with descriptor part', () => {
-	it('starts with a descriptor', () => {
-		jest.doMock('../lib/constants', () => {
-			const actual = jest.requireActual('../lib/constants');
-
-			return {
-				...actual,
-				SEA_CREATURES: [],
-				DESCRIPTORS: ['cute'],
-			};
-		});
-
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.generate().startsWith('Cute')).toBeTruthy();
-	});
-});
-
-describe('with color part', () => {
-	it('contains a color in generated username', () => {
-		jest.doMock('../lib/constants', () => {
-			const actual = jest.requireActual('../lib/constants');
-
-			return {
-				...actual,
-				COLORS: ['blue'],
-			};
-		});
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-
-		expect(subjectMock.generate().includes('Blue')).toBeTruthy();
-	});
-});
-
-describe('with maxSize argument', () => {
-	beforeEach(() => {
-		jest.doMock('../lib/constants', () => {
-			const actual = jest.requireActual('../lib/constants');
-
-			return {
-				...actual,
-				SEA_CREATURES: [],
-				DESCRIPTORS: ['cute'],
-				COLORS: ['red'],
-				SEA_LIST: ['walrus'],
-			};
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+			expect(subjectMock.generate().endsWith('Walrus')).toBeTruthy();
 		});
 	});
 
-	it('responds with username shorter than or equal to given size', () => {
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.generate(15).length).toBeLessThanOrEqual(15);
+	describe('with descriptor part', () => {
+		it('starts with a descriptor', () => {
+			jest.doMock('../lib/constants', () => {
+				const actual = jest.requireActual('../lib/constants');
+
+				return {
+					...actual,
+					SEA_CREATURES: [],
+					DESCRIPTORS: ['cute'],
+				};
+			});
+
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+			expect(subjectMock.generate().startsWith('Cute')).toBeTruthy();
+		});
 	});
 
-	it('responds with full combination when appropriate', () => {
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.generate(100)).toBe('CuteRedWalrus');
+	describe('with color part', () => {
+		it('contains a color in generated username', () => {
+			jest.doMock('../lib/constants', () => {
+				const actual = jest.requireActual('../lib/constants');
+
+				return {
+					...actual,
+					COLORS: ['blue'],
+				};
+			});
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+
+			expect(subjectMock.generate().includes('Blue')).toBeTruthy();
+		});
 	});
 
-	it('responds with descriptor + noun when appropriate', () => {
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.generate(12)).toBe('CuteWalrus');
+	describe('with maxSize argument', () => {
+		beforeEach(() => {
+			jest.doMock('../lib/constants', () => {
+				const actual = jest.requireActual('../lib/constants');
+
+				return {
+					...actual,
+					SEA_CREATURES: [],
+					DESCRIPTORS: ['cute'],
+					COLORS: ['red'],
+					SEA_LIST: ['walrus'],
+				};
+			});
+		});
+
+		it('responds with username shorter than or equal to given size', () => {
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+			expect(subjectMock.generate(15).length).toBeLessThanOrEqual(15);
+		});
+
+		it('responds with full combination when appropriate', () => {
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+			expect(subjectMock.generate(100)).toBe('CuteRedWalrus');
+		});
+
+		it('responds with descriptor + noun when appropriate', () => {
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+			expect(subjectMock.generate(12)).toBe('CuteWalrus');
+		});
+
+		it('responds with color + noun when appropriate', () => {
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+			expect(subjectMock.generate(9)).toBe('RedWalrus');
+		});
+
+		it('responds with part of the noun when appropriate', () => {
+			// import again after mock
+			const subjectMock = require('../lib/do_username');
+			expect(subjectMock.generate(5)).toBe('Walru');
+		});
 	});
 
-	it('responds with color + noun when appropriate', () => {
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.generate(9)).toBe('RedWalrus');
-	});
+	describe('when is invalid', () => {
+		const argumentError = 'The maxSize argument must be an integer number greater than zero.';
+		it('raises ArgumentError negative values', () => {
+			expect(() => {
+				subject.generate(-99);
+			}).toThrow(argumentError);
+		});
 
-	it('responds with part of the noun when appropriate', () => {
-		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.generate(5)).toBe('Walru');
-	});
-});
+		it('raises ArgumentError negative values', () => {
+			expect(() => {
+				subject.generate(0);
+			}).toThrow(argumentError);
+		});
 
-describe('when is invalid', () => {
-	const argumentError = 'The maxSize argument must be an integer number greater than zero.';
-	it('raises ArgumentError negative values', () => {
-		expect(() => {
-			subject.generate(-99);
-		}).toThrow(argumentError);
-	});
-
-	it('raises ArgumentError negative values', () => {
-		expect(() => {
-			subject.generate(0);
-		}).toThrow(argumentError);
-	});
-
-	it('raises ArgumentError negative values', () => {
-		// import again after mock
-		expect(() => {
-			subject.generate('abc');
-		}).toThrow(argumentError);
+		it('raises ArgumentError negative values', () => {
+			// import again after mock
+			expect(() => {
+				subject.generate('abc');
+			}).toThrow(argumentError);
+		});
 	});
 });
 
@@ -156,8 +158,8 @@ describe('random noun', () => {
 
 	it('returns an item from the list of creatures and objects', () => {
 		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.randomNoun()).toBe('walrus');
+		const privateFunctionsMock = require('../lib/private_functions');
+		expect(privateFunctionsMock.randomNoun()).toBe('walrus');
 	});
 });
 
@@ -177,8 +179,8 @@ describe('random descriptor', () => {
 
 		it('returns an item from the list of descriptors', () => {
 			// import again after mock
-			const subjectMock = require('../lib/do_username');
-			expect(subjectMock.randomDescriptor('walrus')).toBe('cute');
+			const privateFunctionsMock = require('../lib/private_functions');
+			expect(privateFunctionsMock.randomDescriptor('walrus')).toBe('cute');
 		});
 	});
 
@@ -199,8 +201,8 @@ describe('random descriptor', () => {
 
 			it('returns an item from the list of creature descriptors', () => {
 				// import again after mock
-				const subjectMock = require('../lib/do_username');
-				expect(subjectMock.randomDescriptor('walrus')).toBe('huge');
+				const privateFunctionsMock = require('../lib/private_functions');
+				expect(privateFunctionsMock.randomDescriptor('walrus')).toBe('huge');
 			});
 		});
 
@@ -220,8 +222,8 @@ describe('random descriptor', () => {
 
 			it('returns an item from the list of creature descriptors', () => {
 				// import again after mock
-				const subjectMock = require('../lib/do_username');
-				expect(subjectMock.randomDescriptor('walrus')).toBe('cute');
+				const privateFunctionsMock = require('../lib/private_functions');
+				expect(privateFunctionsMock.randomDescriptor('walrus')).toBe('cute');
 			});
 		});
 	});
@@ -241,19 +243,19 @@ describe('random color', () => {
 
 	it('returns an item from the list of colors', () => {
 		// import again after mock
-		const subjectMock = require('../lib/do_username');
-		expect(subjectMock.randomColor('walrus')).toBe('red');
+		const privateFunctionsMock = require('../lib/private_functions');
+		expect(privateFunctionsMock.randomColor('walrus')).toBe('red');
 	});
 });
 
 describe('format', () => {
 	it('sets the first character to be uppercase', () => {
-		expect(subject.format('test')).toBe('Test');
+		expect(privateFuncions.format('test')).toBe('Test');
 	});
 
 	describe('with a string with existing uppercase characters', () => {
 		it('does not force existing characters to lowercase', () => {
-			expect(subject.format('testTesting')).toBe('TestTesting');
+			expect(privateFuncions.format('testTesting')).toBe('TestTesting');
 		});
 	});
 });
@@ -261,29 +263,25 @@ describe('format', () => {
 describe('combine username', () => {
 	describe('when max_size allows for the full combination', () => {
 		it('responds with full combination (descriptor + color + noun)', () => {
-			// import again after mock
-			expect(subject.combineUsername(100, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingRedWalrus');
+			expect(privateFuncions.combineUsername(100, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingRedWalrus');
 		});
 	});
 
 	describe('when max_size allows for the descriptor and noun', () => {
 		it('responds with the descriptor + noun combination', () => {
-			// import again after mock
-			expect(subject.combineUsername(14, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingWalrus');
+			expect(privateFuncions.combineUsername(14, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingWalrus');
 		});
 	});
 
 	describe('when max_size allows for the noun', () => {
 		it('responds with just the nounresponds with just the noun', () => {
-			// import again after mock
-			expect(subject.combineUsername(6, 'Swimming', 'Red', 'Walrus')).toBe('Walrus');
+			expect(privateFuncions.combineUsername(6, 'Swimming', 'Red', 'Walrus')).toBe('Walrus');
 		});
 	});
 
 	describe('when max_size is shorter than the noun', () => {
 		it('responds with the noun trimmed to the max size', () => {
-			// import again after mock
-			expect(subject.combineUsername(4, 'Swimming', 'Red', 'Walrus')).toBe('Walr');
+			expect(privateFuncions.combineUsername(4, 'Swimming', 'Red', 'Walrus')).toBe('Walr');
 		});
 	});
 });
