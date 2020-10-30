@@ -6,7 +6,6 @@ javascript/node_modules
 # Ruby gem
 ruby/*.gem
 ruby/.rspec_status
-
 ruby/coverage
 
 # Rust crate
