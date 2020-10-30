@@ -1,4 +1,5 @@
 .idea
+.DS_Store
 
 # JavaScript package
 javascript/node_modules
@@ -7,6 +8,16 @@ javascript/node_modules
 ruby/*.gem
 ruby/.rspec_status
 ruby/coverage
+
+# Python
+python/bin
+python/lib
+python/dist
+python/.Python
+python/include
+python/build
+python/*.egg-info
+python/*/__pycache__
 
 # Rust crate
 target

@@ -69,6 +69,30 @@ Both the `generate` method and the constants should be provided as part of a
 module (or as static methods/constants in a class) named `DOUsername`, such that
 the method can be accessed via `DOUsername.generate`, where appropriate.
 
+### Ruby
+
+[README](ruby/README.md)
+
+https://rubygems.org/gems/do_username
+
+`gem install do_username`
+
+### JavaScript
+
+[README](javascript/README.md)
+
+https://www.npmjs.com/package/do_username
+
+`npm install do_username`
+
+### Python
+
+[README](python/README.md)
+
+https://pypi.org/project/do-username/
+
+`pip3 install do_username`
+
 ## License
 
 This project is licensed under [Apache 2.0](LICENSE) 
