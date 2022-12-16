@@ -1,0 +1,46 @@
+name: 'Continuous Integration: JavaScript'
+
+on: [pull_request]
+
+jobs:
+  eslint:
+    name: Eslint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: javascript
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        name: Install Node.js
+        with:
+          node-version-file: .nvrmc
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Eslint
+        run: npm run lint
+
+  jest:
+    name: Jest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: javascript
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        name: Install Node.js
+        with:
+          node-version-file: .nvrmc
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Jest
+        run: npm test
