@@ -8,7 +8,7 @@ defaults:
 
 jobs:
   rubocop:
-    name: Rubocop
+    name: RuboCop
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
           working-directory: ruby
           bundler-cache: true
 
-      - name: Run Rubocop
+      - name: Run RuboCop
         run: bundle exec rubocop
 
   rspec:

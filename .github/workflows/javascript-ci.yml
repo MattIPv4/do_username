@@ -8,7 +8,7 @@ defaults:
 
 jobs:
   eslint:
-    name: Eslint
+    name: ESLint
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +24,7 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Eslint
+      - name: Run ESLint
         run: npm run lint
 
   jest:
