@@ -2,13 +2,15 @@ name: 'Continuous Integration: JavaScript'
 
 on: [pull_request]
 
+defaults:
+  run:
+    working-directory: javascript
+
 jobs:
   eslint:
     name: Eslint
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: javascript
+
     steps:
       - uses: actions/checkout@v3
 
@@ -27,9 +29,7 @@ jobs:
   jest:
     name: Jest
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: javascript
+
     steps:
       - uses: actions/checkout@v3
 

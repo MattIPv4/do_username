@@ -2,13 +2,15 @@ name: 'Continuous Integration: Ruby'
 
 on: [pull_request]
 
+defaults:
+  run:
+    working-directory: ruby
+
 jobs:
   rubocop:
     name: Rubocop
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ruby
+
     steps:
       - uses: actions/checkout@v3
 
@@ -23,9 +25,7 @@ jobs:
   rspec:
     name: RSpec
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ruby
+
     steps:
       - uses: actions/checkout@v3
 
