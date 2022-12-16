@@ -1,0 +1,48 @@
+name: 'Continuous Integration: JavaScript'
+
+on: [pull_request]
+
+defaults:
+  run:
+    working-directory: javascript
+
+jobs:
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        name: Install Node.js
+        with:
+          node-version-file: javascript/.nvmrc
+          cache: npm
+          cache-dependency-path: javascript/package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+  jest:
+    name: Jest
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        name: Install Node.js
+        with:
+          node-version-file: javascript/.nvmrc
+          cache: npm
+          cache-dependency-path: javascript/package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Jest
+        run: npm test
