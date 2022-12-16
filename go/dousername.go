@@ -6,16 +6,17 @@ import (
 	"time"
 )
 
-func random(arr []string) string {
-	rand.Seed(time.Now().UnixNano())
-	return arr[rand.Intn(len(arr))]
+var random = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+func randArr(arr []string) string {
+	return arr[random.Intn(len(arr))]
 }
 
 func randomDesc(randNoun string) string {
 	if !contains(SeaCreatures, randNoun) {
-		return random(Descriptors)
+		return randArr(Descriptors)
 	}
-	return random(append(Descriptors, CreatureDescriptors...))
+	return randArr(append(Descriptors, CreatureDescriptors...))
 }
 
 func contains(arr []string, str string) bool {
@@ -61,9 +62,9 @@ var Descriptors = append(AdjectiveDescriptors, SizeDescriptors...)
 
 // Generate : Returns a random DO username
 func Generate() string {
-	randNoun := random(SeaList)
+	randNoun := randArr(SeaList)
 	randDesc := randomDesc(randNoun)
-	randColor := random(Colors)
+	randColor := randArr(Colors)
 
 	if len(randDesc+randNoun+randColor) <= 30 {
 		return capitalize([]string{randDesc, randColor, randNoun})
