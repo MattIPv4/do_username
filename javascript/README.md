@@ -14,10 +14,10 @@ https://www.npmjs.com/package/do_username
 const DOUsername = require('do_username');
 
 // Generate a random username with a max length of 30 characters
-consoel.log(DOUsername.generate());
+console.log(DOUsername.generate());
 
 // Generate a random username with a max length of 15 characters
-consoel.log(DOUsername.generate(15));
+console.log(DOUsername.generate(15));
 ```
 
 ```text
