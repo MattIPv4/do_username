@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 const subject = require('../lib/do_username');
-const privateFuncions = require('../lib/private_functions');
+const privateFunctions = require('../lib/private_functions');
 
 beforeEach(() => {
     jest.resetModules();
@@ -251,12 +251,12 @@ describe('random color', () => {
 
 describe('format', () => {
     it('sets the first character to be uppercase', () => {
-        expect(privateFuncions.format('test')).toBe('Test');
+        expect(privateFunctions.format('test')).toBe('Test');
     });
 
     describe('with a string with existing uppercase characters', () => {
         it('does not force existing characters to lowercase', () => {
-            expect(privateFuncions.format('testTesting')).toBe('TestTesting');
+            expect(privateFunctions.format('testTesting')).toBe('TestTesting');
         });
     });
 });
@@ -264,25 +264,25 @@ describe('format', () => {
 describe('combine username', () => {
     describe('when max_size allows for the full combination', () => {
         it('responds with full combination (descriptor + color + noun)', () => {
-            expect(privateFuncions.combineUsername(100, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingRedWalrus');
+            expect(privateFunctions.combineUsername(100, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingRedWalrus');
         });
     });
 
     describe('when max_size allows for the descriptor and noun', () => {
         it('responds with the descriptor + noun combination', () => {
-            expect(privateFuncions.combineUsername(14, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingWalrus');
+            expect(privateFunctions.combineUsername(14, 'Swimming', 'Red', 'Walrus')).toBe('SwimmingWalrus');
         });
     });
 
     describe('when max_size allows for the noun', () => {
         it('responds with just the nounresponds with just the noun', () => {
-            expect(privateFuncions.combineUsername(6, 'Swimming', 'Red', 'Walrus')).toBe('Walrus');
+            expect(privateFunctions.combineUsername(6, 'Swimming', 'Red', 'Walrus')).toBe('Walrus');
         });
     });
 
     describe('when max_size is shorter than the noun', () => {
         it('responds with the noun trimmed to the max size', () => {
-            expect(privateFuncions.combineUsername(4, 'Swimming', 'Red', 'Walrus')).toBe('Walr');
+            expect(privateFunctions.combineUsername(4, 'Swimming', 'Red', 'Walrus')).toBe('Walr');
         });
     });
 });
