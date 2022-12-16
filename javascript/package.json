@@ -10,8 +10,8 @@
   "homepage": "https://github.com/MattIPv4/do_username/tree/master/javascript#readme",
   "bugs": "https://github.com/MattIPv4/do_username/issues",
   "scripts": {
-    "lint": "eslint lib/**/*.js",
-    "lint:fix": "eslint lib/**/*.js --fix",
+    "lint": "eslint {lib,spec}/**/*.js",
+    "lint:fix": "eslint {lib,spec}/**/*.js --fix",
     "test": "jest"
   },
   "author": "DigitalOcean, Matt Cowley",
