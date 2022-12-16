@@ -4,10 +4,7 @@ A DigitalOcean-community-themed username generator.
 
 ## Install
 
-```
-go mod init goproj
-go get github.com/MattIPv4/do_username/go
-```
+`go get github.com/MattIPv4/do_username/go`
 
 ## Example
 
@@ -22,7 +19,6 @@ import (
 func main() {
 	fmt.Println(dousername.Generate())
 }
-
 ```
 
 ## License

@@ -28,6 +28,12 @@ https://crates.io/crates/do_username
 
 `do_username = "1.0.0"`
 
+### Go
+
+[README](go/README.md)
+
+`go get github.com/MattIPv4/do_username/go`
+
 ### Interface
 
 The [Ruby gem](ruby) acts as the main implementation, with all other
