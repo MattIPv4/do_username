@@ -15,7 +15,7 @@ func randomDesc(randNoun string) string {
 	if !contains(SeaCreatures, randNoun) {
 		return random(Descriptors)
 	}
-	return random(append(Descriptors, CreatuteDescriptors...))
+	return random(append(Descriptors, CreatureDescriptors...))
 }
 
 func contains(arr []string, str string) bool {
@@ -47,8 +47,8 @@ var AdjectiveDescriptors = []string{"cute", "adorable", "lovable", "happy", "san
 // SizeDescriptors : descriptors for all nouns (creatures + objects)
 var SizeDescriptors = []string{"large", "big", "small", "giant", "massive", "tiny", "little"}
 
-// CreatuteDescriptors : descriptors specific to creature nouns
-var CreatuteDescriptors = []string{"swimming", "sleeping", "eating", "hiding"}
+// CreatureDescriptors : descriptors specific to creature nouns
+var CreatureDescriptors = []string{"swimming", "sleeping", "eating", "hiding"}
 
 // Colors : all possible (sea-related) colors
 var Colors = []string{"blue", "blueGreen", "darkCyan", "electricBlue", "greenBlue", "lightCyan", "lightSeaGreen", "seaGreen", "turquoise", "aqua", "aquamarine", "teal", "cyan", "gray", "darkBlue", "cerulean", "azure", "lapis", "navy"}
